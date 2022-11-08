@@ -3,6 +3,10 @@
     margin: 1rem;
 }
 
+.esconder{
+    display: none;
+}
+
 #submit{
     width: 40px;
     height: 40px;
@@ -12,7 +16,7 @@
     border: 1px solid orange;
 }
 
-#pizza-container > h2#error{
+#pizza-container > h2{
     color: red;
     font-weight: 600;
     font-size: 1.5rem;

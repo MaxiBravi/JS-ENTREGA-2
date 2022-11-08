@@ -25,19 +25,26 @@ const SUBMIT_BUTTON = document.getElementById("submit");
 const input_pizza = document.getElementById("input-pizza");
 const pizza_container = document.getElementById("pizza-container");
 const FORM = document.querySelector("form");
-const ERROR = document.getElementById("error");
+const error_nan = document.getElementById("error-nan");
+const error_empty = document.getElementById("error-empty");
+
+error_empty.classList.add("esconder");
+error_nan.classList.add("esconder");
 
 const checkInputPizza = (e) =>{
     e.preventDefault();
     const numeroPizza = input_pizza.value;
-    console.log(numeroPizza);
-    if(isNaN(numeroPizza)){
-        pizza_container.insertAdjacentHTML('afterbegin', '<h2 id="error">El valor ingresado no corresponde a un numero.</h2>');
-        console.log("Is NaN.")
-    }else{
-        console.log(!ERROR) /* POR QUE EL ! ? */
-        console.log("Is not a NaN.")   
+
+    if(numeroPizza.length < 0){
+        error_empty.classList.remove("esconder");
+        console.log("empty")
+    }else if(isNaN(numeroPizza)){
+            error_empty.classList.add("esconder");
+            error_nan.classList.remove("esconder");
+    }else if(!isNaN(numeroPizza)){
+        error_nan.classList.add("esconder");
     }
+
     return;
 }
 FORM.addEventListener("submit", checkInputPizza);
