@@ -21,19 +21,24 @@ let listaPizzas = [napolitana, cancha, muzarella, salame, cebolla, jamon_y_morro
 
 /* E2 */
 
-const SUBMIT_BUTTON = document.getElementById("submit")
-const INPUT_PIZZA_VALUE = document.getElementById("input-pizza").value
-const PIZZA_CONTAINER = document.getElementById("pizza-container")
-const FORM = document.getElementById("form");
+const SUBMIT_BUTTON = document.getElementById("submit");
+const input_pizza = document.getElementById("input-pizza");
+const pizza_container = document.getElementById("pizza-container");
+const FORM = document.querySelector("form");
+const ERROR = document.getElementById("error");
 
-const checkInputPizza = INPUT_PIZZA_VALUE =>{
-    if(typeof INPUT_PIZZA_VALUE == "number"){
-
+const checkInputPizza = (e) =>{
+    e.preventDefault();
+    const numeroPizza = input_pizza.value;
+    console.log(numeroPizza);
+    if(isNaN(numeroPizza)){
+        pizza_container.insertAdjacentHTML('afterbegin', '<h2 id="error">El valor ingresado no corresponde a un numero.</h2>');
+        console.log("Is NaN.")
     }else{
-        PIZZA_CONTAINER.innerHTML = `<h2 id="error">El valor ingresado no corresponde a un numero.</h2>`;
+        console.log(!ERROR) /* POR QUE EL ! ? */
+        console.log("Is not a NaN.")   
     }
-    
+    return;
 }
-
 FORM.addEventListener("submit", checkInputPizza);
 
